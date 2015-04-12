@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+ 
+<struts>
+	<!-- Demo Start -->
+	<package name="maintenance" namespace="/Maintenance" extends="struts-default">
+		<action name="entry">
+			<result>pages/maintenance_entry.jsp</result>
+		</action>
+		<action name="Welcome" class="com.vee.demo.MaintenanceController">
+			<result name="success">pages/maintenance_entry.jsp</result>
+		</action>
+	</package>
+	
+	<package name="user" namespace="/User" extends="struts-default">
+		<action name="login_entry">
+			<result>pages/user_login.jsp</result>
+		</action>
+		<action name="login_action" class="com.vee.demo.UserAction" method="loginValidation">
+			<result name="success">pages/user_screen_1.jsp</result>
+			<result name="input">pages/user_login.jsp</result>
+		</action>
+	</package>
+	<!-- Demo End -->
+	
+	<package name="login" namespace="/" extends="struts-default">
+		<action name="index">
+			<result>index.jsp</result>
+		</action>
+		<action name="check_login" class="com.vee.controller.LoginAction" method="doLogin">
+			<result name="success" type="redirect">/Maintenance/entry.action</result>
+			<result name="input">index.jsp</result>
+		</action>
+	</package>
+ 
+</struts>
